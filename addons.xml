@@ -1,5 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<addon id="docker.linuxserver.prowlarr"
+       name="Prowlarr (LinuxServer.io)"
+       version="1.0.0"
+       provider-name="LinuxServer.io">
+  <requires>
+    <import addon="service.system.docker" version="0.0.0" />
+    <import addon="docker.linuxserver.updater" version="0.0.0"/>
+  </requires>
+  <extension point="xbmc.service" library="default.py">
+    <provides></provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Prowlarr in a docker container</summary>
+    <description>
+An indexer manager/proxy built on the popular *arr .net/reactjs base stack to integrate with your various PVR apps.
+
+This is a docker container brought to you by the LinuxServer.io team.
+Please visit https://linuxserver.io for more information.
+    </description>
+    <disclaimer>
+    </disclaimer>
+    <news>
+docker.linuxserver.prowlarr:
+--------------------------
+
+1.0.0
+- Initial release
+    </news>
+    <platform>all</platform>
+    <website>http://linuxserver.io/</website>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+</addon>
+
+<addon id="docker.linuxserver.radarr"
+       name="Radarr (LinuxServer.io)"
+       version="2.0.0"
+       provider-name="LinuxServer.io">
+  <requires>
+    <import addon="service.system.docker" version="0.0.0" />
+    <import addon="docker.linuxserver.updater" version="0.0.0"/>
+  </requires>
+  <extension point="xbmc.service" library="default.py">
+    <provides></provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Radarr in a docker container</summary>
+    <description>
+A fork of Sonarr to work with movies à la Couchpotato.
+
+This is a docker container brought to you by the LinuxServer.io team.
+Please visit https://linuxserver.io for more information.
+    </description>
+    <disclaimer>
+    </disclaimer>
+    <news>
+docker.linuxserver.radarr:
+--------------------------
+2.0.0
+- Compatibility update
+
+1.0.0
+-Initial release
+    </news>
+    <platform>all</platform>
+    <website>http://linuxserver.io/</website>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+</addon>
+
 <addon id="docker.linuxserver.sonarr"
        name="Sonarr (LinuxServer.io)"
        version="2.0.0"
@@ -38,45 +114,6 @@ docker.linuxserver.sonarr:
 
 1.0.1
 - Unified addon for x86_64 and arm
-
-1.0.0
--Initial release
-    </news>
-    <platform>all</platform>
-    <website>http://linuxserver.io/</website>
-    <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
-</addon>
-
-<addon id="docker.linuxserver.radarr"
-       name="Radarr (LinuxServer.io)"
-       version="2.0.0"
-       provider-name="LinuxServer.io">
-  <requires>
-    <import addon="service.system.docker" version="0.0.0" />
-    <import addon="docker.linuxserver.updater" version="0.0.0"/>
-  </requires>
-  <extension point="xbmc.service" library="default.py">
-    <provides></provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Radarr in a docker container</summary>
-    <description>
-A fork of Sonarr to work with movies à la Couchpotato.
-
-This is a docker container brought to you by the LinuxServer.io team.
-Please visit https://linuxserver.io for more information.
-    </description>
-    <disclaimer>
-    </disclaimer>
-    <news>
-docker.linuxserver.radarr:
---------------------------
-2.0.0
-- Compatibility update
 
 1.0.0
 -Initial release
@@ -146,9 +183,11 @@ docker.linuxserver.transmission:
   </requires>
   <extension point="xbmc.addon.repository"
              name="LinuxServer.io's Extended Docker Add-on Repository">
-    <info compressed="true">https://raw.githubusercontent.com/SugarDroid/libreelec-addons/develop/addons.xml</info>
-    <checksum>https://raw.githubusercontent.com/SugarDroid/libreelec-addons/develop/addons.xml.md5</checksum>
-    <datadir zip="true">https://raw.githubusercontent.com/SugarDroid/libreelec-addons/develop/download</datadir>
+    <dir>
+      <info compressed="true">https://raw.githubusercontent.com/SugarDroid/libreelec-addons/develop/addons.xml</info>
+      <checksum>https://raw.githubusercontent.com/SugarDroid/libreelec-addons/develop/addons.xml.md5</checksum>
+      <datadir zip="true">https://raw.githubusercontent.com/SugarDroid/libreelec-addons/develop/download</datadir>
+    </dir>
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary>Install add-ons from LinuxServer.io's docker repository</summary>
@@ -159,43 +198,6 @@ Please visit https://linuxserver.io for more information.
     </description>
     <disclaimer> </disclaimer>
     <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="docker.linuxserver.prowlarr"
-       name="Prowlarr (LinuxServer.io)"
-       version="1.0.0"
-       provider-name="LinuxServer.io">
-  <requires>
-    <import addon="service.system.docker" version="0.0.0" />
-    <import addon="docker.linuxserver.updater" version="0.0.0"/>
-  </requires>
-  <extension point="xbmc.service" library="default.py">
-    <provides></provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Prowlarr in a docker container</summary>
-    <description>
-An indexer manager/proxy built on the popular *arr .net/reactjs base stack to integrate with your various PVR apps.
-
-This is a docker container brought to you by the LinuxServer.io team.
-Please visit https://linuxserver.io for more information.
-    </description>
-    <disclaimer>
-    </disclaimer>
-    <news>
-docker.linuxserver.prowlarr:
---------------------------
-
-1.0.0
-- Initial release
-    </news>
-    <platform>all</platform>
-    <website>http://linuxserver.io/</website>
-    <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-    </assets>
   </extension>
 </addon>
 </addons>
