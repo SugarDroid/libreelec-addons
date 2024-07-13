@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # *
 # *  Copyright (C) 2012-2013 Garrett Brown
 # *  Copyright (C) 2010      j48antialias
@@ -27,6 +27,7 @@
 # *  - (assumed) zips reside in folder "download"
 # *  - md5 checksum creation added for zips
 # *  - Skip moving files and zip creation if zip file for the same version already exists
+# *  - alphabetical sorting
 
 """ addons.xml generator """
 
@@ -65,14 +66,14 @@ class Generator:
  
     def _generate_addons_file(self):
         # addon list
-        addons = os.listdir(".")
+        addons = sorted(os.listdir("."))
         # final addons text
         addons_xml = u("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<addons>\n")
         # loop thru and add each addons addon.xml file
         for addon in addons:
             try:
                 # skip any file or .svn folder or .git folder
-                if (not os.path.isdir(addon) or addon == ".svn" or addon == ".git" or addon == "download"): continue
+                if (not os.path.isdir(addon) or addon == ".svn" or addon == ".git" or addon == ".github" or addon == "download"): continue
                 # create path
                 _path = os.path.join(addon, "addon.xml")
                 # split lines for stripping
@@ -143,7 +144,7 @@ if (__name__ == "__main__"):
         print('Starting zip file creation...')
         rootdir = sys.path[0]
         zipsdir = rootdir + os.sep + 'download'   
-        filesinrootdir = os.listdir(rootdir)
+        filesinrootdir = sorted(os.listdir(rootdir))
         
         for x in filesinrootdir:
             if re.search("^(context|plugin|script|service|skin|repository|docker)" , x) and not re.search('.zip', x):
@@ -152,7 +153,7 @@ if (__name__ == "__main__"):
                 zipfilenamelastpart = zipfilename[len(zipfilename) - 4:]
                 zipsfolder = os.path.normpath(os.path.join('download', x)) + os.sep
                 foldertozip = rootdir + os.sep + x
-                filesinfoldertozip = os.listdir(foldertozip)        
+                filesinfoldertozip = sorted(os.listdir(foldertozip))        
                 # #check if download folder exists
                 if not os.path.exists(zipsfolder):
                     os.makedirs(zipsfolder)
@@ -178,13 +179,9 @@ if (__name__ == "__main__"):
                         zipfolder(zipfilenamefirstpart + version + zipfilenamelastpart, foldertozip, zipsfolder, x)
                         print('zipped with zipfolder')
                         # # #create md5 checksum for zips
+                        import hashlib
                         try:
-                            import md5
-                            m = md5.new(open("%s" % (zipsfolder + x + version + '.zip'), "r").read()).hexdigest()
-                        except ImportError:
-                            import hashlib
-                            m = hashlib.md5(open("%s" % (zipsfolder + x + version + '.zip'), "r", encoding="UTF-8").read().encode("UTF-8")).hexdigest()
-                        try:
+                            m = hashlib.md5(open("%s" % (zipsfolder + x + version + '.zip'), "rb").read()).hexdigest()
                             open("%s" % (zipsfolder + x + version + '.zip.md5'), "wb").write(m.encode("UTF-8"))
                             print("zip.md5 file created\n")
                         except Exception as e:
@@ -203,3 +200,4 @@ if (__name__ == "__main__"):
     except Exception as e:
         print('Cannot create or move the needed files\n%s' % e)
     print('Done')
+    

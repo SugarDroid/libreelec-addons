@@ -22,5 +22,5 @@ msgid "Map /downloads"
 msgstr ""
 
 msgctxt "#30008"
-msgid "Listening port for web gui"
+msgid "Listening port for WebUI"
 msgstr ""
