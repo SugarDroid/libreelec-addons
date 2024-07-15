@@ -22,9 +22,25 @@ msgid "Map /watch"
 msgstr ""
 
 msgctxt "#30008"
-msgid "Webui port"
+msgid "Listening port for WebUI"
 msgstr ""
 
 msgctxt "#30009"
 msgid "P2P port"
+msgstr ""
+
+msgctxt "#30020"
+msgid "Advanced Settings"
+msgstr ""
+
+msgctxt "#30021"
+msgid "UID/GID override (0/root not supported)"
+msgstr ""
+
+msgctxt "#30022"
+msgid "UID"
+msgstr ""
+
+msgctxt "#30023"
+msgid "GID"
 msgstr ""
