@@ -1,6 +1,9 @@
 <settings>
-    <setting id="V_config" value="/storage/.kodi/userdata/addon_data/docker.linuxserver.radarr/config" />
-    <setting id="V_movies" value="/storage/videos" />
-    <setting id="V_downloads" value="/storage/downloads/downloadclient-downloads" />
-    <setting id="P_port" value="7878" />
+    <setting id="V_config"          value="/storage/.kodi/userdata/addon_data/docker.linuxserver.radarr/config" />
+    <setting id="V_movies"          value="/storage/videos" />
+    <setting id="V_downloads"       value="/storage/downloads/downloadclient-downloads" />
+    <setting id="P_port"            value="7878" />
+    <setting id="E_manual_uid"      value="false" />
+    <setting id="E_PUID"            value="65534" />
+    <setting id="E_PGID"            value="100" />
 </settings>
